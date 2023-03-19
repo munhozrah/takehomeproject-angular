@@ -1,0 +1,32 @@
+<div class="main-div">
+    <mat-card>
+        <mat-card-header>
+            <mat-title><h2>Please edit course</h2></mat-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="formCourse" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <h3><div>Course id: {{course.id}}</div></h3>
+                    <p>
+                    <mat-form-field appearance="outline" color="accent">
+                        <mat-label>Course name</mat-label>
+                        <input matInput formControlName="courseName" id="courseName" name="courseName"
+                            placeholder="Enter course name" type="text" />
+                    </mat-form-field>
+                    </p>
+                </div>
+                <div class="form-group submit-button">
+                    <button mat-flat-button color="accent">
+                        submit
+                    </button>
+                </div>
+            </form>
+            <pre>
+    {{ formCourse.value | json }}
+  </pre>
+            <pre>
+    {{ formCourse.status }}
+  </pre>
+        </mat-card-content>
+    </mat-card>
+</div>

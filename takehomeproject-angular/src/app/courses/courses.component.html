@@ -1,7 +1,7 @@
 <div class="main-div">
     <mat-card>
         <mat-card-header>
-            <mat-title>Courses list</mat-title>
+            <mat-title><h2>Courses list</h2></mat-title>
         </mat-card-header>
         <mat-card-content>
             <mat-table [dataSource]="coursesDataSource">
@@ -14,16 +14,14 @@
                     <mat-cell *matCellDef="let course"> {{course.courseName}}</mat-cell>
                 </ng-container>
                 <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+                <mat-row *matRowDef="let row; columns: columnsToDisplay" (click)="selectRow(row)"></mat-row>
             </mat-table>
-            <mat-paginator [pageSizeOptions]="[10, 20, 50]"
-                 showFirstLastButtons
-                 aria-label="Select page of courses list">
+            <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons
+                aria-label="Select page of courses list">
             </mat-paginator>
+            <mat-action>
+                <mat-button mat-list-item>add course</mat-button>
+            </mat-action>
         </mat-card-content>
-        <mat-action-list>
-            <mat-button mat-list-item>Save</mat-button>
-            <mat-button mat-list-item>Undo</mat-button>
-          </mat-action-list>
     </mat-card>
 </div>

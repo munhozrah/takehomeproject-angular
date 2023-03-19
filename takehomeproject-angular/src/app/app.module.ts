@@ -14,13 +14,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './Interceptors/AuthInterceptor';
 import { CoursesComponent } from './courses/courses.component';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CoursesComponent
+    CoursesComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,

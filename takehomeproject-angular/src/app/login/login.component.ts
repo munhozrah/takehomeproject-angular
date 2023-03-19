@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit{
     await lastValueFrom(this.userService.login(this.user))
       .then((data: User) => {
         this.userService.loggedUser = data;
+        this.userService.loggedUser.password = this.user.password; //not the ideal... Use JWT tokens instead
         this.user = data;
         this.router.navigateByUrl("/courses")
       })
