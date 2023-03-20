@@ -15,7 +15,8 @@ export class CourseDetailComponent implements OnInit {
   course!: Course;
   formCourse!: FormGroup;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private courseService: CoursesService) {}
+  constructor(private router: Router, private formBuilder: FormBuilder, private courseService: CoursesService) {
+  }
   
   ngOnInit(): void {
     const state = history.state;
@@ -25,10 +26,11 @@ export class CourseDetailComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     this.course = Course.fromForm(this.formCourse);
-    await lastValueFrom(this.courseService.save(this.course))
+    await lastValueFrom(this.courseService.update(this.course))
     .then((course: Course) => {
       this.course = course;
       this.formCourse = this.createFormFromCourse();
+      this.router.navigateByUrl("/courses");
     })
     .catch((error: HttpErrorResponse) => {
       alert(`${error.status}: ${error.error}`);
@@ -40,6 +42,13 @@ export class CourseDetailComponent implements OnInit {
       id: [{value: this.course.id, disabled: true}],
       courseName: [this.course.courseName, Validators.required]
     });
+  }
 
+  async delete(): Promise<void> {
+    await lastValueFrom(this.courseService.delete(this.course.id))
+    .then((id: string) => {
+      alert(`Course ${id} named ${this.course.courseName} deleted`);
+      this.router.navigateByUrl("/courses");
+    })
   }
 }

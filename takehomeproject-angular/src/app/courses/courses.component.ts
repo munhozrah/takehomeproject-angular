@@ -16,8 +16,10 @@ export class CoursesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+    console.log('course constructor');
   }
   ngOnInit(): void {
+    console.log('course onInit');
       this.activatedRoute.data.subscribe(({ courses }) => {
         this.coursesDataSource.data = courses;
       })
@@ -29,5 +31,9 @@ export class CoursesComponent implements OnInit, AfterViewInit {
 
   selectRow(course: any): void {
     this.router.navigateByUrl('/course/detail', { state: course });
+  }
+
+  addCourse(): void {
+    this.router.navigateByUrl('/course/detail');
   }
 }
