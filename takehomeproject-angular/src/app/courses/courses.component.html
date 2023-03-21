@@ -1,3 +1,6 @@
+<nav>
+    <app-menu [isAdmin]="isAdmin"></app-menu>
+</nav>
 <div class="main-div">
     <mat-card>
         <mat-card-header>
@@ -13,12 +16,17 @@
                     <mat-header-cell *matHeaderCellDef> Course name</mat-header-cell>
                     <mat-cell *matCellDef="let course"> {{course.courseName}}</mat-cell>
                 </ng-container>
+                <ng-container matColumnDef="duration">
+                    <mat-header-cell *matHeaderCellDef> Course duration</mat-header-cell>
+                    <mat-cell *matCellDef="let course"> {{ course.duration }} weeks</mat-cell>
+                </ng-container>
                 <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: columnsToDisplay" (click)="selectRow(row)"></mat-row>
             </mat-table>
             <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons
                 aria-label="Select page of courses list">
             </mat-paginator>
+            <br>
             <mat-action>
                 <button mat-raised-button color="primary" (click)="addCourse()">Add course</button>
             </mat-action>

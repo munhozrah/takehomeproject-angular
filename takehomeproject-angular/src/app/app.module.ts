@@ -15,6 +15,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './Interceptors/AuthInterceptor';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CourseDetailComponent } from './courses/course-detail/course-detail.com
     AppComponent,
     LoginComponent,
     CoursesComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
 import { Course } from '../model/Course';
+import { UserService } from '../services/user.service';
+import { User } from '../model/User';
 
 @Component({
   selector: 'app-courses',
@@ -12,17 +14,18 @@ import { Course } from '../model/Course';
 })
 export class CoursesComponent implements OnInit, AfterViewInit {
   coursesDataSource = new MatTableDataSource<Course[]>();
-  readonly columnsToDisplay = new Array('id', 'courseName');
+  readonly columnsToDisplay = new Array('id', 'courseName', 'duration');
+  isAdmin = false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
-    console.log('course constructor');
-  }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private userService: UserService) {}
   ngOnInit(): void {
-    console.log('course onInit');
       this.activatedRoute.data.subscribe(({ courses }) => {
         this.coursesDataSource.data = courses;
       })
+    this.userService.loggedUser.subscribe((user: User) => {
+      this.isAdmin = user.role === 'ADMIN';
+    })
   }
 
   ngAfterViewInit() {

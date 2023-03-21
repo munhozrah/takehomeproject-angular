@@ -1,3 +1,6 @@
+<nav>
+    <app-menu [isAdmin]="isAdmin"></app-menu>
+</nav>
 <div class="main-div">
     <mat-card>
         <mat-card-header>
@@ -19,6 +22,13 @@
                                 placeholder="Enter course name" type="text" />
                         </mat-form-field>
                     </p>
+                    <p>
+                        <mat-form-field appearance="outline" color="accent">
+                            <mat-label>Course duration in weeks</mat-label>
+                            <input matInput formControlName="duration" id="duration" name="duration"
+                                placeholder="Enter course duration in weeks" type="text" />
+                        </mat-form-field>
+                    </p>
                 </div>
             </form>
             <!-- <pre>
@@ -31,6 +41,7 @@
         <mat-card-actions>
             <div>
                 <button *ngIf="course.id" mat-raised-button color="warn" (click)="delete()">Delete course</button>
+                &nbsp;
                 <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
             </div>
         </mat-card-actions>

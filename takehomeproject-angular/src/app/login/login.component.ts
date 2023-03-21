@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit{
   }
   ngOnInit(): void {
     this.formLogin = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ['john.black', Validators.required],
+      password: ['1234', Validators.required],
     });
   }
 
@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit{
     this.user = User.fromForm(this.formLogin);
     await lastValueFrom(this.userService.login(this.user))
       .then((data: User) => {
-        this.userService.loggedUser = data;
-        this.userService.loggedUser.password = this.user.password; //not the ideal... Use JWT tokens instead
+        data.password = this.user.password;
+        this.userService.next(data);
         this.user = data;
         this.router.navigateByUrl("/courses")
       })

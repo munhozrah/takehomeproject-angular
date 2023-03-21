@@ -22,3 +22,11 @@ body {
 .mat-raised-button {
   margin-left: 10px;
 }
+
+.mat-mdc-form-field-card {
+  min-width: 300px !important ;
+}
+
+.mat-mdc-text-field-wrapper{
+  min-width: 300px !important ;
+}
