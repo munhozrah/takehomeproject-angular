@@ -1,31 +1,31 @@
 # TakehomeprojectAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+Takehome project for Rafael applying for full-stack engineer. It'S the angular front-end consuming a REST API
+
+## Requirements
+
+For building and running the application you need:
+
+- [Angualar 15+](https://angular.io/guide/setup-local)
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Architecture
+This application uses a simple approach with components and services as the main parts. The current user is shared using the UserService.
+When maintaining consider:
+* Use resolvers to load data outside the component
+* Use guards to make validations before loading routes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-[ ] Unit tests
-[ ] make it multi-module
-[ ] segregate domain and business logic using better architecture
+## Still Pending
+* Add logoff feature
+* Modularize application and consider enable lazy loading
+* Add environment file and scripts for starting in package.json
+* segregate the application in different layers (maybe apply repository pattern)
+* Add unit tests
+* Add e2e tests
